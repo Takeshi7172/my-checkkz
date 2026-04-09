@@ -14,6 +14,8 @@ export default defineConfig({
     alias: {
       // Alias @ to the src directory
       '@': path.resolve(__dirname, './src'),
+      // Resolve absolute /utils imports used in components (Rollup can't resolve them otherwise)
+      '/utils': path.resolve(__dirname, './utils'),
     },
   },
 
