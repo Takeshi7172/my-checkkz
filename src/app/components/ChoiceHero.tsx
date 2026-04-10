@@ -64,93 +64,92 @@ const MiniLanguageSwitcher = () => {
   );
 };
 
-// ---- App Illustration — real phone screenshot ----
+// ---- App Illustration — phone fills container, bleeds off bottom naturally ----
 const AppIllustration = () => (
-  <div className="relative flex items-center justify-center w-full h-full">
-    {/* Ambient glow */}
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-      <div className="w-[160px] h-[200px] rounded-full bg-purple-500/20 blur-3xl" />
-    </div>
+  <div className="relative w-full h-full flex items-end justify-center pb-0">
+    {/* Subtle circular ambient — NO blur-2xl/3xl per DESIGN.md */}
+    <div className="absolute bottom-[10%] left-1/2 -translate-x-1/2 w-[180px] h-[180px] rounded-full bg-white/[0.04]" />
 
-    {/* Real app screenshot */}
+    {/* Phone — fills height, slight rotation */}
     <img
       src={img16}
       alt="myCheck App"
-      className="relative z-10 w-[160px] md:w-[195px] object-contain"
-      style={{ filter: 'drop-shadow(0 24px 48px rgba(0,0,0,0.55))' }}
+      className="relative z-10 h-[90%] w-auto object-contain rotate-[4deg] origin-bottom"
+      style={{ filter: 'drop-shadow(0 32px 64px rgba(0,0,0,0.6)) drop-shadow(0 8px 16px rgba(0,0,0,0.4))' }}
     />
 
-    {/* Floating -25% badge */}
+    {/* -25% badge — top-left of illustration zone */}
     <motion.div
       animate={{ y: [0, -8, 0] }}
       transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
-      className="absolute left-2 top-6 bg-[#FFD60A] text-[#1E1B4B] text-sm font-black px-3 py-2 rounded-xl shadow-lg z-20 whitespace-nowrap"
+      className="absolute top-[8%] left-[2%] bg-[#FFD60A] text-[#1E1B4B] text-[13px] font-black px-3 py-2 rounded-2xl shadow-xl z-20 whitespace-nowrap"
+      style={{ boxShadow: '0 8px 24px rgba(255,214,10,0.35)' }}
     >
       -25% скидка
     </motion.div>
 
-    {/* Cashback badge */}
+    {/* Cashback badge — right side, mid-height */}
     <motion.div
       animate={{ y: [0, -6, 0] }}
-      transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
-      className="absolute right-1 bottom-10 bg-[#34D399] text-[#0A4B2D] text-[11px] font-black px-3 py-1.5 rounded-xl shadow-lg z-20 whitespace-nowrap"
+      transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
+      className="absolute top-[42%] right-[2%] bg-[#34D399] text-[#0A4B2D] text-[11px] font-black px-3 py-1.5 rounded-xl shadow-lg z-20 whitespace-nowrap"
+      style={{ boxShadow: '0 6px 20px rgba(52,211,153,0.3)' }}
     >
       Cashback ₸840
     </motion.div>
 
     {/* Sparkles */}
     <motion.div
-      animate={{ scale: [1, 1.4, 1], opacity: [0.5, 1, 0.5] }}
+      animate={{ scale: [1, 1.5, 1], opacity: [0.4, 1, 0.4] }}
       transition={{ duration: 2.8, repeat: Infinity }}
-      className="absolute top-4 right-3 text-[#FFD60A] text-lg z-20"
+      className="absolute top-[15%] right-[10%] text-[#FFD60A] text-lg z-20"
     >✦</motion.div>
     <motion.div
-      animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.8, 0.3] }}
-      transition={{ duration: 3.5, repeat: Infinity, delay: 1.2 }}
-      className="absolute top-14 left-4 text-[#FFD60A] text-sm z-20"
+      animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.7, 0.2] }}
+      transition={{ duration: 3.8, repeat: Infinity, delay: 1.4 }}
+      className="absolute top-[55%] left-[8%] text-[#FFD60A] text-sm z-20"
     >✦</motion.div>
   </div>
 );
 
-// ---- Dashboard Illustration — AI-generated dashboard screenshot ----
+// ---- Dashboard Illustration — laptop fills container ----
 const DashboardIllustration = () => (
-  <div className="relative flex items-center justify-center w-full h-full">
-    {/* Ambient glow */}
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-      <div className="w-[200px] h-[140px] rounded-full bg-blue-500/15 blur-3xl" />
-    </div>
+  <div className="relative w-full h-full flex items-end justify-center pb-0">
+    {/* Subtle ambient — NO blur */}
+    <div className="absolute bottom-[15%] left-1/2 -translate-x-1/2 w-[200px] h-[120px] rounded-full bg-white/[0.03]" />
 
-    {/* AI-generated dashboard screenshot */}
+    {/* Dashboard — fills most of container */}
     <img
       src={imgDashboard}
       alt="myCheck Analytics"
-      className="relative z-10 w-[210px] md:w-[250px] object-contain rounded-xl"
-      style={{ filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.6))' }}
+      className="relative z-10 w-[95%] object-contain rounded-2xl"
+      style={{ filter: 'drop-shadow(0 24px 48px rgba(0,0,0,0.7)) drop-shadow(0 4px 12px rgba(0,0,0,0.4))' }}
     />
 
-    {/* Floating "Новый партнёр" chip */}
+    {/* Новый партнёр chip — top area */}
     <motion.div
       animate={{ y: [0, -5, 0] }}
-      transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-      className="absolute left-0 top-8 bg-white/[0.12] border border-white/20 backdrop-blur-sm text-white text-[11px] font-semibold px-3 py-1.5 rounded-full z-20 flex items-center gap-1.5 whitespace-nowrap"
+      transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
+      className="absolute top-[5%] left-[3%] bg-black/40 border border-white/[0.15] backdrop-blur-sm text-white text-[11px] font-semibold px-3 py-1.5 rounded-full z-20 flex items-center gap-1.5 whitespace-nowrap"
     >
-      <span className="text-green-400">✓</span> Новый партнёр
+      <span className="w-1.5 h-1.5 rounded-full bg-[#34D399] inline-block animate-pulse" />
+      Новый партнёр
     </motion.div>
 
     {/* ROI chip */}
     <motion.div
       animate={{ y: [0, -6, 0] }}
-      transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-      className="absolute right-0 bottom-14 bg-[#FFD60A]/10 border border-[#FFD60A]/30 text-[#FFD60A] text-[11px] font-bold px-3 py-1.5 rounded-full z-20 whitespace-nowrap"
+      transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.3 }}
+      className="absolute top-[22%] right-[3%] bg-[#FFD60A]/[0.12] border border-[#FFD60A]/30 text-[#FFD60A] text-[11px] font-bold px-3 py-1.5 rounded-full z-20 whitespace-nowrap"
     >
       ROI +340%
     </motion.div>
 
     {/* Sparkle */}
     <motion.div
-      animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
-      transition={{ duration: 2.5, repeat: Infinity }}
-      className="absolute top-2 right-3 text-[#FFD60A] text-lg z-20"
+      animate={{ scale: [1, 1.4, 1], opacity: [0.4, 1, 0.4] }}
+      transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
+      className="absolute top-[10%] right-[12%] text-[#FFD60A] text-base z-20"
     >✦</motion.div>
   </div>
 );
@@ -200,49 +199,58 @@ const ChoiceCard: React.FC<ChoiceCardProps> = ({
       flex flex-col
     `}
   >
-    {/* Top row: badge + arrow */}
-    <div className="flex items-center justify-between mb-6 relative z-10">
-      <span className="text-[11px] font-semibold uppercase tracking-widest px-3 py-1 rounded-full bg-white/15 text-white/70">
-        {badgeLabel}
-      </span>
-      <div className="w-9 h-9 bg-white/15 rounded-full flex items-center justify-center">
-        <ChevronRight className="w-4 h-4 text-white/70" />
-      </div>
-    </div>
+    {/* Top edge highlight */}
+    <div className="absolute top-0 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
 
-    {/* Headline + subtitle */}
-    <div className="relative z-10">
-      <h2
-        className="text-4xl md:text-5xl font-black text-white leading-tight mb-3"
-        style={{ fontFamily: 'var(--font-display)' }}
-      >
-        {title}
-      </h2>
-      <p className="text-base md:text-lg text-white/65 leading-relaxed">
-        {subtitle}
-      </p>
-    </div>
-
-    {/* Illustration — flex-1, centered */}
-    <div className="flex-1 flex items-center justify-center relative my-4 overflow-visible min-h-0">
+    {/* Illustration — ABSOLUTE bottom-right, fills 55% width and 75% height */}
+    <div className="absolute right-0 bottom-0 w-[55%] h-[75%] pointer-events-none z-0">
       {illustration}
     </div>
 
-    {/* CTA bottom zone */}
-    <div className="mt-auto pt-6 border-t border-white/10 relative z-10">
-      {ctaVariant === 'yellow' ? (
-        <div className="inline-flex items-center gap-2 bg-[#FFD60A] text-[#1E1B4B] font-black text-sm px-5 py-3 rounded-2xl">
-          {ctaLabel} <ChevronRight className="w-4 h-4" />
+    {/* Content — constrained to left 50%, full height flex column */}
+    <div className="relative z-10 flex flex-col h-full max-w-[50%]">
+      {/* Top row: badge + arrow */}
+      <div className="flex items-center justify-between mb-5">
+        <span className="text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full bg-white/[0.12] text-white/60 border border-white/[0.08]">
+          {badgeLabel}
+        </span>
+        <div className="w-8 h-8 bg-white/[0.12] rounded-full flex items-center justify-center border border-white/[0.08]">
+          <ChevronRight className="w-4 h-4 text-white/60" />
         </div>
-      ) : (
-        <div className="inline-flex items-center gap-2 bg-white/15 border border-white/20 text-white font-semibold text-sm px-5 py-3 rounded-2xl">
-          {ctaLabel} <ChevronRight className="w-4 h-4" />
-        </div>
-      )}
-    </div>
+      </div>
 
-    {/* Top edge highlight */}
-    <div className="absolute top-0 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
+      {/* Title + subtitle */}
+      <div className="mt-2">
+        <h2
+          className="text-[40px] md:text-[52px] font-black text-white leading-[1.05] tracking-tight mb-4"
+          style={{ fontFamily: 'var(--font-display)' }}
+        >
+          {title}
+        </h2>
+        <p
+          className="text-[15px] md:text-[16px] text-white/60 leading-relaxed"
+          style={{ fontFamily: "'Figtree', sans-serif" }}
+        >
+          {subtitle}
+        </p>
+      </div>
+
+      {/* Spacer */}
+      <div className="flex-1" />
+
+      {/* CTA */}
+      <div className="pb-2">
+        {ctaVariant === 'yellow' ? (
+          <div className="inline-flex items-center gap-2 bg-[#FFD60A] text-[#1E1B4B] font-black text-[13px] px-5 py-3 rounded-[14px] shadow-lg shadow-yellow-500/20">
+            {ctaLabel} <ChevronRight className="w-4 h-4" />
+          </div>
+        ) : (
+          <div className="inline-flex items-center gap-2 bg-white/[0.1] border border-white/[0.15] text-white font-semibold text-[13px] px-5 py-3 rounded-[14px]">
+            {ctaLabel} <ChevronRight className="w-4 h-4" />
+          </div>
+        )}
+      </div>
+    </div>
   </motion.button>
 );
 
@@ -301,7 +309,7 @@ export const ChoiceHero: React.FC<ChoiceHeroProps> = ({ onSelectApp, onSelectBus
             <ChoiceCard
               title={t('choice_app_title')}
               subtitle={t('choice_app_subtitle')}
-              gradient="bg-gradient-to-br from-[#6B5FD4] via-[#7C6FD8] to-[#9B4DCA]"
+              gradient="bg-gradient-to-br from-[#5B50CC] via-[#7162D6] to-[#8B4DC0]"
               onClick={onSelectApp}
               delay={0.15}
               illustration={<AppIllustration />}
@@ -312,8 +320,8 @@ export const ChoiceHero: React.FC<ChoiceHeroProps> = ({ onSelectApp, onSelectBus
             <ChoiceCard
               title={t('choice_business_title')}
               subtitle={t('choice_business_subtitle')}
-              gradient="bg-gradient-to-br from-[#0F3460] via-[#16213E] to-[#0D1B3E]"
-              border="border border-[#3B82F6]/40"
+              gradient="bg-gradient-to-br from-[#0A2540] via-[#112240] to-[#0A1628]"
+              border="border border-white/[0.08]"
               onClick={onSelectBusiness}
               delay={0.3}
               illustration={<DashboardIllustration />}
