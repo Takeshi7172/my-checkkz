@@ -4,7 +4,6 @@ import { ChevronRight, ChevronDown } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
 import svgPaths from '@/imports/svg-by6trk53vw';
 import img16 from '@/assets/1fbf9ff2ab7596cc85d05cb6c6b9072ec853a197.png';
-import imgIpad from '@/assets/4732892f9b5bd3e49dcc0003fbf14632a93664a5.png';
 
 // ---- Logo (inlined from Navbar) ----
 const Logo = () => (
@@ -66,20 +65,19 @@ const MiniLanguageSwitcher = () => {
 
 // ---- App Illustration (real phone image) ----
 const AppIllustration = () => (
-  <div className="relative flex items-end justify-end w-full h-full">
-    {/* Soft circle glow behind phone — more visible */}
-    <div className="absolute right-0 bottom-0 w-[240px] h-[240px] rounded-full bg-white/15 blur-2xl" />
-    <div className="absolute right-2 bottom-0 w-[180px] h-[180px] rounded-full bg-[#F4F1FD]/10" />
+  <div className="relative flex items-end justify-center w-full h-full pb-4">
+    {/* Clean ambient glow — no blur to avoid streaks */}
+    <div className="absolute right-4 bottom-4 w-[200px] h-[200px] rounded-full bg-white/6" />
 
-    {/* Phone image — slightly bigger */}
+    {/* Phone image — properly sized */}
     <img
       src={img16}
       alt="myCheck App"
-      className="relative z-10 w-[160px] md:w-[200px] object-contain drop-shadow-2xl rotate-6"
-      style={{ filter: 'drop-shadow(0 24px 48px rgba(0,0,0,0.35))' }}
+      className="relative z-10 w-[150px] md:w-[185px] object-contain drop-shadow-2xl rotate-3"
+      style={{ filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.4))' }}
     />
 
-    {/* Floating 25% badge — more prominent */}
+    {/* Floating -25% badge */}
     <motion.div
       animate={{ y: [0, -8, 0] }}
       transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
@@ -88,7 +86,7 @@ const AppIllustration = () => (
       -25%
     </motion.div>
 
-    {/* Floating sparkle */}
+    {/* Sparkle */}
     <motion.div
       animate={{ scale: [1, 1.3, 1], opacity: [0.6, 1, 0.6] }}
       transition={{ duration: 2.5, repeat: Infinity }}
@@ -99,40 +97,71 @@ const AppIllustration = () => (
   </div>
 );
 
-// ---- Business Illustration (real iPad image) ----
-const BusinessIllustration = () => (
-  <div className="relative flex items-end justify-end w-full h-full">
-    {/* Soft circle glow behind iPad */}
-    <div className="absolute right-0 bottom-0 w-[240px] h-[240px] rounded-full bg-white/15 blur-2xl" />
-    <div className="absolute right-2 bottom-0 w-[180px] h-[180px] rounded-full bg-[#F4F1FD]/10" />
+// ---- Dashboard Illustration (inline mockup) ----
+const DashboardIllustration = () => (
+  <div className="relative flex items-end justify-center w-full h-full pb-4 pr-2">
+    {/* Dashboard card mockup */}
+    <div className="relative z-10 w-[200px] md:w-[240px] bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-3 shadow-2xl">
+      {/* Top bar */}
+      <div className="flex items-center justify-between mb-3">
+        <div className="text-[8px] font-bold text-white/80">myCheck Analytics</div>
+        <div className="flex gap-1">
+          <div className="w-1.5 h-1.5 rounded-full bg-[#FFD60A]" />
+          <div className="w-1.5 h-1.5 rounded-full bg-white/30" />
+          <div className="w-1.5 h-1.5 rounded-full bg-white/30" />
+        </div>
+      </div>
 
-    {/* iPad image */}
-    <img
-      src={imgIpad}
-      alt="myCheck Business"
-      className="relative z-10 w-[170px] md:w-[210px] object-contain drop-shadow-2xl"
-      style={{ filter: 'drop-shadow(0 24px 48px rgba(0,0,0,0.35))', rotate: '-6deg' }}
-    />
+      {/* Stat cards row */}
+      <div className="grid grid-cols-2 gap-1.5 mb-3">
+        <div className="bg-white/10 rounded-lg p-2">
+          <div className="text-[7px] text-white/50 mb-0.5">Выручка</div>
+          <div className="text-[11px] font-black text-white">₸2.4M</div>
+          <div className="text-[7px] text-green-400">+18%</div>
+        </div>
+        <div className="bg-white/10 rounded-lg p-2">
+          <div className="text-[7px] text-white/50 mb-0.5">Клиентов</div>
+          <div className="text-[11px] font-black text-white">1,248</div>
+          <div className="text-[7px] text-green-400">+34%</div>
+        </div>
+      </div>
 
-    {/* Floating ROI badge */}
-    <motion.div
-      animate={{ y: [0, -8, 0] }}
-      transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
-      className="absolute left-0 top-8 bg-[#FFD60A] text-[#1E1B4B] text-sm font-black px-3 py-2 rounded-xl shadow-lg z-20"
-    >
-      ROI +340%
-    </motion.div>
+      {/* Mini bar chart */}
+      <div className="bg-white/[0.08] rounded-lg p-2 mb-2">
+        <div className="text-[7px] text-white/50 mb-2">Продажи за неделю</div>
+        <div className="flex items-end gap-1 h-[32px]">
+          {[60, 80, 45, 90, 70, 95, 75].map((h, i) => (
+            <div
+              key={i}
+              className="flex-1 rounded-sm"
+              style={{
+                height: `${h}%`,
+                background: i === 5 ? '#FFD60A' : 'rgba(255,255,255,0.25)',
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Bottom row */}
+      <div className="flex items-center justify-between">
+        <div className="text-[7px] text-white/40">Ср. чек: ₸4,200</div>
+        <div className="bg-[#FFD60A]/20 text-[#FFD60A] text-[7px] font-bold px-2 py-0.5 rounded-full">
+          ROI +340%
+        </div>
+      </div>
+    </div>
 
     {/* Floating "Новый партнёр" chip */}
     <motion.div
       animate={{ y: [0, -5, 0] }}
       transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-      className="absolute left-2 bottom-16 bg-white/15 border border-white/25 backdrop-blur-sm text-white text-[11px] font-semibold px-3 py-1.5 rounded-full z-20 flex items-center gap-1.5"
+      className="absolute left-0 top-12 bg-white/15 border border-white/25 backdrop-blur-sm text-white text-[11px] font-semibold px-3 py-1.5 rounded-full z-20 flex items-center gap-1.5"
     >
       <span className="text-green-400">✓</span> Новый партнёр
     </motion.div>
 
-    {/* Floating sparkle */}
+    {/* Sparkle */}
     <motion.div
       animate={{ scale: [1, 1.3, 1], opacity: [0.6, 1, 0.6] }}
       transition={{ duration: 2.5, repeat: Infinity }}
@@ -198,7 +227,7 @@ const ChoiceCard: React.FC<ChoiceCardProps> = ({
     </div>
 
     {/* Illustration — absolute, right half only, bottom-aligned, no text overlap */}
-    <div className="absolute right-0 bottom-0 w-[48%] md:w-[46%] h-[85%] pointer-events-none">
+    <div className="absolute right-0 bottom-0 w-[52%] md:w-[50%] h-[90%] pointer-events-none overflow-visible">
       {illustration}
     </div>
   </motion.button>
@@ -251,7 +280,7 @@ export const ChoiceHero: React.FC<ChoiceHeroProps> = ({ onSelectApp, onSelectBus
             border="border border-[#8F80E2]/30"
             onClick={onSelectBusiness}
             delay={0.3}
-            illustration={<BusinessIllustration />}
+            illustration={<DashboardIllustration />}
           />
         </div>
 
