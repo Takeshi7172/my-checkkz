@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { ChevronRight, ChevronDown } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
 import svgPaths from '@/imports/svg-by6trk53vw';
+import img16 from '@/assets/1fbf9ff2ab7596cc85d05cb6c6b9072ec853a197.png';
+import imgDashboard from '@/assets/dashboard-mockup.png';
 
 // ---- Logo (inlined from Navbar) ----
 const Logo = () => (
@@ -62,86 +64,27 @@ const MiniLanguageSwitcher = () => {
   );
 };
 
-// ---- App Illustration — iPhone SVG mockup ----
+// ---- App Illustration — real phone screenshot ----
 const AppIllustration = () => (
   <div className="relative flex items-center justify-center w-full h-full">
     {/* Ambient glow */}
-    <div className="absolute inset-0 flex items-center justify-center">
-      <div className="w-[180px] h-[180px] rounded-full bg-purple-400/20 blur-3xl" />
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div className="w-[160px] h-[200px] rounded-full bg-purple-500/20 blur-3xl" />
     </div>
 
-    {/* Phone SVG frame */}
-    <div className="relative z-10" style={{ filter: 'drop-shadow(0 24px 48px rgba(0,0,0,0.5))' }}>
-      <svg width="160" height="320" viewBox="0 0 160 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-        {/* Phone body */}
-        <rect x="1" y="1" width="158" height="318" rx="36" fill="#0A0A14" stroke="#ffffff" strokeWidth="1.5" strokeOpacity="0.15"/>
-        {/* Screen area */}
-        <rect x="8" y="12" width="144" height="296" rx="30" fill="#0F0E1A"/>
-        {/* Dynamic island */}
-        <rect x="54" y="18" width="52" height="14" rx="7" fill="#000"/>
-        {/* Side button */}
-        <rect x="157" y="80" width="4" height="40" rx="2" fill="#ffffff" fillOpacity="0.2"/>
-        <rect x="-1" y="100" width="4" height="28" rx="2" fill="#ffffff" fillOpacity="0.2"/>
-        <rect x="-1" y="136" width="4" height="28" rx="2" fill="#ffffff" fillOpacity="0.2"/>
-
-        {/* App content — status bar */}
-        <text x="16" y="46" fill="white" fillOpacity="0.6" fontSize="8" fontFamily="system-ui">9:41</text>
-        <rect x="130" y="40" width="18" height="8" rx="2" fill="none" stroke="white" strokeWidth="1" strokeOpacity="0.4"/>
-        <rect x="131" y="41" width="13" height="6" rx="1" fill="#4ADE80"/>
-        <rect x="148" y="42" width="2" height="4" rx="1" fill="white" fillOpacity="0.4"/>
-
-        {/* App header */}
-        <text x="16" y="72" fill="white" fontSize="11" fontWeight="bold" fontFamily="system-ui">myCheck</text>
-        <text x="16" y="84" fill="white" fillOpacity="0.5" fontSize="7" fontFamily="system-ui">Привет, Алибек 👋</text>
-
-        {/* Balance card */}
-        <rect x="12" y="92" width="136" height="60" rx="14" fill="url(#balanceGrad)"/>
-        <text x="22" y="110" fill="white" fillOpacity="0.7" fontSize="7" fontFamily="system-ui">Кэшбэк баланс</text>
-        <text x="22" y="128" fill="white" fontSize="18" fontWeight="bold" fontFamily="system-ui">₸ 4 820</text>
-        <text x="22" y="142" fill="#FFD60A" fontSize="7" fontWeight="600" fontFamily="system-ui">+₸840 за последний чек</text>
-
-        {/* Recent receipts label */}
-        <text x="16" y="168" fill="white" fontSize="9" fontWeight="600" fontFamily="system-ui">Последние чеки</text>
-
-        {/* Receipt card 1 */}
-        <rect x="12" y="174" width="136" height="38" rx="10" fill="#ffffff" fillOpacity="0.07"/>
-        <rect x="20" y="183" width="20" height="20" rx="6" fill="#8F80E2" fillOpacity="0.4"/>
-        <text x="23" y="196" fill="white" fontSize="11">🛍</text>
-        <text x="48" y="192" fill="white" fontSize="8" fontWeight="600" fontFamily="system-ui">Magnum</text>
-        <text x="48" y="203" fill="white" fillOpacity="0.4" fontSize="7" fontFamily="system-ui">Сегодня, 14:22</text>
-        <text x="118" y="192" fill="#4ADE80" fontSize="8" fontWeight="700" fontFamily="system-ui">-25%</text>
-        <text x="116" y="203" fill="white" fillOpacity="0.5" fontSize="7" fontFamily="system-ui">₸3 200</text>
-
-        {/* Receipt card 2 */}
-        <rect x="12" y="216" width="136" height="38" rx="10" fill="#ffffff" fillOpacity="0.07"/>
-        <rect x="20" y="225" width="20" height="20" rx="6" fill="#FFD60A" fillOpacity="0.3"/>
-        <text x="23" y="238" fill="white" fontSize="11">☕</text>
-        <text x="48" y="234" fill="white" fontSize="8" fontWeight="600" fontFamily="system-ui">Coffee BOOM</text>
-        <text x="48" y="245" fill="white" fillOpacity="0.4" fontSize="7" fontFamily="system-ui">Вчера, 09:15</text>
-        <text x="116" y="234" fill="#4ADE80" fontSize="8" fontWeight="700" fontFamily="system-ui">-15%</text>
-        <text x="118" y="245" fill="white" fillOpacity="0.5" fontSize="7" fontFamily="system-ui">₸980</text>
-
-        {/* Bottom nav bar */}
-        <rect x="8" y="276" width="144" height="28" rx="14" fill="#ffffff" fillOpacity="0.05"/>
-        <text x="22" y="293" fill="#8F80E2" fontSize="14">🏠</text>
-        <text x="54" y="293" fill="white" fillOpacity="0.4" fontSize="14">🧾</text>
-        <text x="86" y="293" fill="white" fillOpacity="0.4" fontSize="14">🎁</text>
-        <text x="118" y="293" fill="white" fillOpacity="0.4" fontSize="14">👤</text>
-
-        <defs>
-          <linearGradient id="balanceGrad" x1="12" y1="92" x2="148" y2="152" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#7C6FD8"/>
-            <stop offset="1" stopColor="#9B4DCA"/>
-          </linearGradient>
-        </defs>
-      </svg>
-    </div>
+    {/* Real app screenshot */}
+    <img
+      src={img16}
+      alt="myCheck App"
+      className="relative z-10 w-[160px] md:w-[195px] object-contain"
+      style={{ filter: 'drop-shadow(0 24px 48px rgba(0,0,0,0.55))' }}
+    />
 
     {/* Floating -25% badge */}
     <motion.div
       animate={{ y: [0, -8, 0] }}
       transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
-      className="absolute left-2 top-8 bg-[#FFD60A] text-[#1E1B4B] text-sm font-black px-3 py-2 rounded-xl shadow-lg z-20 whitespace-nowrap"
+      className="absolute left-2 top-6 bg-[#FFD60A] text-[#1E1B4B] text-sm font-black px-3 py-2 rounded-xl shadow-lg z-20 whitespace-nowrap"
     >
       -25% скидка
     </motion.div>
@@ -150,133 +93,46 @@ const AppIllustration = () => (
     <motion.div
       animate={{ y: [0, -6, 0] }}
       transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
-      className="absolute right-0 bottom-12 bg-[#34D399] text-[#0A4B2D] text-[11px] font-black px-3 py-1.5 rounded-xl shadow-lg z-20 whitespace-nowrap"
+      className="absolute right-1 bottom-10 bg-[#34D399] text-[#0A4B2D] text-[11px] font-black px-3 py-1.5 rounded-xl shadow-lg z-20 whitespace-nowrap"
     >
       Cashback ₸840
     </motion.div>
 
-    {/* Sparkle */}
+    {/* Sparkles */}
     <motion.div
       animate={{ scale: [1, 1.4, 1], opacity: [0.5, 1, 0.5] }}
       transition={{ duration: 2.8, repeat: Infinity }}
-      className="absolute top-4 right-4 text-[#FFD60A] text-lg z-20"
+      className="absolute top-4 right-3 text-[#FFD60A] text-lg z-20"
     >✦</motion.div>
     <motion.div
       animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.8, 0.3] }}
       transition={{ duration: 3.5, repeat: Infinity, delay: 1.2 }}
-      className="absolute top-14 left-6 text-[#FFD60A] text-sm z-20"
+      className="absolute top-14 left-4 text-[#FFD60A] text-sm z-20"
     >✦</motion.div>
   </div>
 );
 
-// ---- Dashboard Illustration — Browser SVG mockup ----
+// ---- Dashboard Illustration — AI-generated dashboard screenshot ----
 const DashboardIllustration = () => (
   <div className="relative flex items-center justify-center w-full h-full">
-    {/* Glow */}
-    <div className="absolute inset-0 flex items-center justify-center">
-      <div className="w-[200px] h-[160px] rounded-full bg-blue-500/15 blur-3xl" />
+    {/* Ambient glow */}
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div className="w-[200px] h-[140px] rounded-full bg-blue-500/15 blur-3xl" />
     </div>
 
-    {/* Browser/App frame */}
-    <div className="relative z-10" style={{ filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))' }}>
-      <svg width="230" height="280" viewBox="0 0 230 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-        {/* Window frame */}
-        <rect x="1" y="1" width="228" height="278" rx="16" fill="#0D1117" stroke="#ffffff" strokeWidth="1" strokeOpacity="0.12"/>
-
-        {/* Title bar */}
-        <rect x="1" y="1" width="228" height="32" rx="16" fill="#161B22"/>
-        <rect x="1" y="17" width="228" height="16" fill="#161B22"/>
-
-        {/* Traffic lights */}
-        <circle cx="20" cy="17" r="5" fill="#FF5F57"/>
-        <circle cx="34" cy="17" r="5" fill="#FFBD2E"/>
-        <circle cx="48" cy="17" r="5" fill="#28C840"/>
-
-        {/* URL bar */}
-        <rect x="68" y="10" width="130" height="14" rx="7" fill="#ffffff" fillOpacity="0.06"/>
-        <text x="90" y="20" fill="white" fillOpacity="0.4" fontSize="7" fontFamily="system-ui">mycheck.kz/analytics</text>
-
-        {/* Sidebar */}
-        <rect x="1" y="33" width="40" height="246" fill="#0A0D13" rx="0"/>
-        <rect x="40" y="33" width="1" height="246" fill="#ffffff" fillOpacity="0.06"/>
-
-        {/* Sidebar icons */}
-        <rect x="10" y="46" width="20" height="20" rx="6" fill="#3B82F6" fillOpacity="0.2"/>
-        <text x="13" y="60" fontSize="12" fill="#3B82F6">📊</text>
-        <rect x="10" y="74" width="20" height="20" rx="6" fill="transparent"/>
-        <text x="13" y="88" fontSize="12" fill="white" fillOpacity="0.3">🧾</text>
-        <rect x="10" y="102" width="20" height="20" rx="6" fill="transparent"/>
-        <text x="13" y="116" fontSize="12" fill="white" fillOpacity="0.3">👥</text>
-        <rect x="10" y="130" width="20" height="20" rx="6" fill="transparent"/>
-        <text x="13" y="144" fontSize="12" fill="white" fillOpacity="0.3">⚙️</text>
-
-        {/* Main content area */}
-        {/* Page title */}
-        <text x="50" y="52" fill="white" fontSize="10" fontWeight="700" fontFamily="system-ui">Аналитика</text>
-        <text x="50" y="63" fill="white" fillOpacity="0.35" fontSize="7" fontFamily="system-ui">Апрель 2025</text>
-
-        {/* KPI cards row */}
-        <rect x="50" y="70" width="54" height="46" rx="8" fill="#ffffff" fillOpacity="0.06"/>
-        <text x="57" y="83" fill="white" fillOpacity="0.5" fontSize="6" fontFamily="system-ui">Выручка</text>
-        <text x="57" y="97" fill="white" fontSize="11" fontWeight="800" fontFamily="system-ui">₸2.4M</text>
-        <rect x="57" y="103" width="28" height="8" rx="3" fill="#4ADE80" fillOpacity="0.2"/>
-        <text x="59" y="110" fill="#4ADE80" fontSize="6" fontWeight="700" fontFamily="system-ui">+18% ↑</text>
-
-        <rect x="110" y="70" width="54" height="46" rx="8" fill="#ffffff" fillOpacity="0.06"/>
-        <text x="117" y="83" fill="white" fillOpacity="0.5" fontSize="6" fontFamily="system-ui">Клиентов</text>
-        <text x="117" y="97" fill="white" fontSize="11" fontWeight="800" fontFamily="system-ui">1,248</text>
-        <rect x="117" y="103" width="28" height="8" rx="3" fill="#4ADE80" fillOpacity="0.2"/>
-        <text x="119" y="110" fill="#4ADE80" fontSize="6" fontWeight="700" fontFamily="system-ui">+34% ↑</text>
-
-        <rect x="170" y="70" width="48" height="46" rx="8" fill="#FFD60A" fillOpacity="0.1"/>
-        <text x="176" y="83" fill="white" fillOpacity="0.5" fontSize="6" fontFamily="system-ui">ROI</text>
-        <text x="176" y="97" fill="#FFD60A" fontSize="11" fontWeight="800" fontFamily="system-ui">+340%</text>
-        <circle cx="182" cy="108" r="3" fill="#4ADE80"/>
-        <text x="187" y="111" fill="#4ADE80" fontSize="6" fontFamily="system-ui">live</text>
-
-        {/* Chart area */}
-        <rect x="50" y="122" width="168" height="80" rx="8" fill="#ffffff" fillOpacity="0.04"/>
-        <text x="58" y="135" fill="white" fillOpacity="0.5" fontSize="7" fontFamily="system-ui">Продажи за неделю</text>
-
-        {/* Bar chart bars */}
-        {[
-          { x: 58, h: 32, color: 'rgba(139,120,230,0.5)' },
-          { x: 78, h: 44, color: 'rgba(139,120,230,0.5)' },
-          { x: 98, h: 26, color: 'rgba(139,120,230,0.5)' },
-          { x: 118, h: 52, color: 'rgba(139,120,230,0.5)' },
-          { x: 138, h: 38, color: 'rgba(139,120,230,0.5)' },
-          { x: 158, h: 58, color: '#FFD60A' },
-          { x: 178, h: 44, color: 'rgba(139,120,230,0.5)' },
-        ].map(({ x, h, color }, i) => (
-          <rect key={i} x={x} y={196 - h} width="14" height={h} rx="3" fill={color}/>
-        ))}
-
-        {/* Chart baseline */}
-        <line x1="50" y1="196" x2="218" y2="196" stroke="white" strokeOpacity="0.08" strokeWidth="1"/>
-
-        {/* Day labels */}
-        {['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map((d, i) => (
-          <text key={i} x={61 + i * 20} y={205} fill="white" fillOpacity="0.25" fontSize="6" fontFamily="system-ui" textAnchor="middle">{d}</text>
-        ))}
-
-        {/* Recent transactions */}
-        <text x="50" y="225" fill="white" fillOpacity="0.5" fontSize="7" fontFamily="system-ui">Последние транзакции</text>
-
-        <rect x="50" y="230" width="168" height="20" rx="5" fill="#ffffff" fillOpacity="0.04"/>
-        <text x="56" y="243" fill="white" fontSize="7" fontFamily="system-ui">Magnum • ул. Абая</text>
-        <text x="188" y="243" fill="#4ADE80" fontSize="7" fontWeight="700" fontFamily="system-ui" textAnchor="end">+₸280</text>
-
-        <rect x="50" y="253" width="168" height="20" rx="5" fill="#ffffff" fillOpacity="0.03"/>
-        <text x="56" y="266" fill="white" fontSize="7" fontFamily="system-ui">Coffee BOOM</text>
-        <text x="188" y="266" fill="#4ADE80" fontSize="7" fontWeight="700" fontFamily="system-ui" textAnchor="end">+₸120</text>
-      </svg>
-    </div>
+    {/* AI-generated dashboard screenshot */}
+    <img
+      src={imgDashboard}
+      alt="myCheck Analytics"
+      className="relative z-10 w-[210px] md:w-[250px] object-contain rounded-xl"
+      style={{ filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.6))' }}
+    />
 
     {/* Floating "Новый партнёр" chip */}
     <motion.div
       animate={{ y: [0, -5, 0] }}
       transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-      className="absolute left-0 top-10 bg-white/[0.12] border border-white/20 backdrop-blur-sm text-white text-[11px] font-semibold px-3 py-1.5 rounded-full z-20 flex items-center gap-1.5 whitespace-nowrap"
+      className="absolute left-0 top-8 bg-white/[0.12] border border-white/20 backdrop-blur-sm text-white text-[11px] font-semibold px-3 py-1.5 rounded-full z-20 flex items-center gap-1.5 whitespace-nowrap"
     >
       <span className="text-green-400">✓</span> Новый партнёр
     </motion.div>
@@ -285,7 +141,7 @@ const DashboardIllustration = () => (
     <motion.div
       animate={{ y: [0, -6, 0] }}
       transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-      className="absolute right-0 bottom-16 bg-[#FFD60A]/10 border border-[#FFD60A]/30 text-[#FFD60A] text-[11px] font-bold px-3 py-1.5 rounded-full z-20 whitespace-nowrap"
+      className="absolute right-0 bottom-14 bg-[#FFD60A]/10 border border-[#FFD60A]/30 text-[#FFD60A] text-[11px] font-bold px-3 py-1.5 rounded-full z-20 whitespace-nowrap"
     >
       ROI +340%
     </motion.div>
@@ -294,7 +150,7 @@ const DashboardIllustration = () => (
     <motion.div
       animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
       transition={{ duration: 2.5, repeat: Infinity }}
-      className="absolute top-2 right-4 text-[#FFD60A] text-lg z-20"
+      className="absolute top-2 right-3 text-[#FFD60A] text-lg z-20"
     >✦</motion.div>
   </div>
 );
