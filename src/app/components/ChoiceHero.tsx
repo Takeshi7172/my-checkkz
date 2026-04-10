@@ -66,14 +66,14 @@ const MiniLanguageSwitcher = () => {
 // ---- App Illustration (real phone image) ----
 const AppIllustration = () => (
   <div className="relative flex items-end justify-center w-full h-full pb-4">
-    {/* Clean ambient glow — no blur to avoid streaks */}
+    {/* Ambient glow */}
     <div className="absolute right-4 bottom-4 w-[200px] h-[200px] rounded-full bg-white/6" />
 
-    {/* Phone image — properly sized */}
+    {/* Phone image */}
     <img
       src={img16}
       alt="myCheck App"
-      className="relative z-10 w-[150px] md:w-[185px] object-contain drop-shadow-2xl rotate-3"
+      className="relative z-10 w-[175px] md:w-[210px] object-contain drop-shadow-2xl rotate-3"
       style={{ filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.4))' }}
     />
 
@@ -86,11 +86,29 @@ const AppIllustration = () => (
       -25%
     </motion.div>
 
-    {/* Sparkle */}
+    {/* Cashback badge */}
+    <motion.div
+      animate={{ y: [0, -6, 0] }}
+      transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1.2 }}
+      className="absolute right-0 bottom-16 bg-[#34D399] text-[#0A4B2D] text-[11px] font-black px-3 py-1.5 rounded-xl shadow-lg z-20"
+    >
+      Cashback ₸840
+    </motion.div>
+
+    {/* Sparkle 1 */}
     <motion.div
       animate={{ scale: [1, 1.3, 1], opacity: [0.6, 1, 0.6] }}
       transition={{ duration: 2.5, repeat: Infinity }}
       className="absolute top-2 right-2 text-[#FFD60A] text-xl z-20"
+    >
+      ✦
+    </motion.div>
+
+    {/* Sparkle 2 */}
+    <motion.div
+      animate={{ scale: [1, 1.4, 1], opacity: [0.4, 0.9, 0.4] }}
+      transition={{ duration: 3.2, repeat: Infinity, delay: 1 }}
+      className="absolute top-12 left-4 text-[#FFD60A] text-sm z-20"
     >
       ✦
     </motion.div>
@@ -101,7 +119,7 @@ const AppIllustration = () => (
 const DashboardIllustration = () => (
   <div className="relative flex items-end justify-center w-full h-full pb-4 pr-2">
     {/* Dashboard card mockup */}
-    <div className="relative z-10 w-[200px] md:w-[240px] bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-3 shadow-2xl">
+    <div className="relative z-10 w-[220px] md:w-[265px] bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-3 shadow-2xl">
       {/* Top bar */}
       <div className="flex items-center justify-between mb-3">
         <div className="text-[8px] font-bold text-white/80">myCheck Analytics</div>
@@ -112,17 +130,25 @@ const DashboardIllustration = () => (
         </div>
       </div>
 
-      {/* Stat cards row */}
-      <div className="grid grid-cols-2 gap-1.5 mb-3">
+      {/* Stat cards row — 3 cols */}
+      <div className="grid grid-cols-3 gap-1.5 mb-3">
         <div className="bg-white/10 rounded-lg p-2">
           <div className="text-[7px] text-white/50 mb-0.5">Выручка</div>
           <div className="text-[11px] font-black text-white">₸2.4M</div>
           <div className="text-[7px] text-green-400">+18%</div>
         </div>
         <div className="bg-white/10 rounded-lg p-2">
-          <div className="text-[7px] text-white/50 mb-0.5">Клиентов</div>
+          <div className="text-[7px] text-white/50 mb-0.5">Продажи</div>
           <div className="text-[11px] font-black text-white">1,248</div>
           <div className="text-[7px] text-green-400">+34%</div>
+        </div>
+        <div className="bg-white/10 rounded-lg p-2">
+          <div className="text-[7px] text-white/50 mb-1">Клиентов</div>
+          <div className="text-[11px] font-black text-white">847</div>
+          <div className="flex items-center gap-0.5">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+            <span className="text-[7px] text-green-400">live</span>
+          </div>
         </div>
       </div>
 
@@ -161,6 +187,15 @@ const DashboardIllustration = () => (
       <span className="text-green-400">✓</span> Новый партнёр
     </motion.div>
 
+    {/* Floating ROI chip */}
+    <motion.div
+      animate={{ y: [0, -6, 0] }}
+      transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+      className="absolute right-0 bottom-20 bg-[#0F3460]/90 border border-[#3B82F6]/40 backdrop-blur-sm text-white text-[11px] font-bold px-3 py-1.5 rounded-full z-20 flex items-center gap-1.5"
+    >
+      ROI +340%
+    </motion.div>
+
     {/* Sparkle */}
     <motion.div
       animate={{ scale: [1, 1.3, 1], opacity: [0.6, 1, 0.6] }}
@@ -181,6 +216,9 @@ interface ChoiceCardProps {
   onClick: () => void;
   delay: number;
   illustration: React.ReactNode;
+  badgeLabel: string;
+  ctaLabel: string;
+  ctaVariant: 'yellow' | 'ghost';
 }
 
 const ChoiceCard: React.FC<ChoiceCardProps> = ({
@@ -191,6 +229,9 @@ const ChoiceCard: React.FC<ChoiceCardProps> = ({
   onClick,
   delay,
   illustration,
+  badgeLabel,
+  ctaLabel,
+  ctaVariant,
 }) => (
   <motion.button
     initial={{ opacity: 0, y: 40 }}
@@ -211,13 +252,18 @@ const ChoiceCard: React.FC<ChoiceCardProps> = ({
       flex flex-col
     `}
   >
-    {/* Arrow top-right — bigger circle */}
-    <div className="absolute top-6 right-6 w-12 h-12 bg-white/20 rounded-full flex items-center justify-center z-10">
-      <ChevronRight className="w-5 h-5 text-white" />
+    {/* Top row: badge + arrow */}
+    <div className="flex items-center justify-between mb-6 relative z-10">
+      <span className="text-[11px] font-semibold uppercase tracking-widest px-3 py-1 rounded-full bg-white/15 text-white/70">
+        {badgeLabel}
+      </span>
+      <div className="w-9 h-9 bg-white/15 rounded-full flex items-center justify-center">
+        <ChevronRight className="w-4 h-4 text-white/70" />
+      </div>
     </div>
 
-    {/* Text block — top-left, constrained to left 55% so illustration never overlaps */}
-    <div className="relative z-10 max-w-[55%] md:max-w-[52%]">
+    {/* Headline + subtitle */}
+    <div className="relative z-10">
       <h2
         className="text-4xl md:text-5xl font-black text-white leading-tight mb-3"
         style={{ fontFamily: 'var(--font-display)' }}
@@ -229,9 +275,22 @@ const ChoiceCard: React.FC<ChoiceCardProps> = ({
       </p>
     </div>
 
-    {/* Illustration — absolute, right half only, bottom-aligned, no text overlap */}
-    <div className="absolute right-0 bottom-0 w-[52%] md:w-[50%] h-[90%] pointer-events-none overflow-visible">
+    {/* Illustration — flex-1, centered */}
+    <div className="flex-1 flex items-center justify-center relative my-4 overflow-hidden">
       {illustration}
+    </div>
+
+    {/* CTA bottom zone */}
+    <div className="mt-auto pt-6 border-t border-white/10 relative z-10">
+      {ctaVariant === 'yellow' ? (
+        <div className="inline-flex items-center gap-2 bg-[#FFD60A] text-[#1E1B4B] font-black text-sm px-5 py-3 rounded-2xl">
+          {ctaLabel} <ChevronRight className="w-4 h-4" />
+        </div>
+      ) : (
+        <div className="inline-flex items-center gap-2 bg-white/15 border border-white/20 text-white font-semibold text-sm px-5 py-3 rounded-2xl">
+          {ctaLabel} <ChevronRight className="w-4 h-4" />
+        </div>
+      )}
     </div>
 
     {/* Top edge highlight */}
@@ -272,59 +331,65 @@ export const ChoiceHero: React.FC<ChoiceHeroProps> = ({ onSelectApp, onSelectBus
       />
 
       <div className="relative z-[2] flex flex-col flex-1">
-      {/* Top bar */}
-      <div className="flex items-center justify-between px-6 md:px-[132px] pt-6 md:pt-8">
-        <Logo />
-        <MiniLanguageSwitcher />
-      </div>
-
-      {/* Content */}
-      <div className="flex-1 flex flex-col items-center justify-center px-4 md:px-16 lg:px-24 py-4 gap-8">
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="text-white/30 text-[10px] md:text-xs font-bold uppercase tracking-[0.35em]"
-          style={{ fontFamily: 'var(--font-display)', letterSpacing: '0.35em' }}
-        >
-          {t('choice_for_whom')}
-        </motion.p>
-
-        <div className="flex flex-col md:flex-row gap-5 md:gap-6 w-full max-w-[1200px] mx-auto justify-center items-center md:items-stretch">
-          <ChoiceCard
-            title={t('choice_app_title')}
-            subtitle={t('choice_app_subtitle')}
-            gradient="bg-gradient-to-br from-[#7C6FD8] via-[#8F80E2] to-[#653B9B]"
-            onClick={onSelectApp}
-            delay={0.15}
-            illustration={<AppIllustration />}
-          />
-          <ChoiceCard
-            title={t('choice_business_title')}
-            subtitle={t('choice_business_subtitle')}
-            gradient="bg-gradient-to-br from-[#1A1650] via-[#211D5E] to-[#160F3E]"
-            border="border border-[#8F80E2]/50"
-            onClick={onSelectBusiness}
-            delay={0.3}
-            illustration={<DashboardIllustration />}
-          />
+        {/* Top bar */}
+        <div className="flex items-center justify-between px-6 md:px-[132px] pt-6 md:pt-8">
+          <Logo />
+          <MiniLanguageSwitcher />
         </div>
 
-        {/* Scroll hint */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="flex flex-col items-center gap-2 text-white/30 text-xs"
-        >
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+        {/* Content */}
+        <div className="flex-1 flex flex-col items-center justify-center px-4 md:px-16 lg:px-24 py-4 gap-8">
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="text-white/30 text-[10px] md:text-xs font-bold uppercase tracking-[0.35em]"
+            style={{ fontFamily: 'var(--font-display)', letterSpacing: '0.35em' }}
           >
-            <ChevronDown className="w-5 h-5" />
+            {t('choice_for_whom')}
+          </motion.p>
+
+          <div className="flex flex-col md:flex-row gap-5 md:gap-6 w-full max-w-[1200px] mx-auto justify-center items-center md:items-stretch">
+            <ChoiceCard
+              title={t('choice_app_title')}
+              subtitle={t('choice_app_subtitle')}
+              gradient="bg-gradient-to-br from-[#6B5FD4] via-[#7C6FD8] to-[#9B4DCA]"
+              onClick={onSelectApp}
+              delay={0.15}
+              illustration={<AppIllustration />}
+              badgeLabel="Для покупателей"
+              ctaLabel="Скачать приложение"
+              ctaVariant="yellow"
+            />
+            <ChoiceCard
+              title={t('choice_business_title')}
+              subtitle={t('choice_business_subtitle')}
+              gradient="bg-gradient-to-br from-[#0F3460] via-[#16213E] to-[#0D1B3E]"
+              border="border border-[#3B82F6]/40"
+              onClick={onSelectBusiness}
+              delay={0.3}
+              illustration={<DashboardIllustration />}
+              badgeLabel="Для бизнеса"
+              ctaLabel="Стать партнёром"
+              ctaVariant="ghost"
+            />
+          </div>
+
+          {/* Scroll hint */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="flex flex-col items-center gap-2 text-white/30 text-xs"
+          >
+            <motion.div
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <ChevronDown className="w-5 h-5" />
+            </motion.div>
           </motion.div>
-        </motion.div>
-      </div>
+        </div>
       </div>
     </section>
   );
