@@ -4,7 +4,6 @@ import { ChevronRight, ChevronDown } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
 import svgPaths from '@/imports/svg-by6trk53vw';
 import img16 from '@/assets/1fbf9ff2ab7596cc85d05cb6c6b9072ec853a197.png';
-import imgDashboard from '@/assets/dashboard-mockup.png';
 
 // ---- Logo (inlined from Navbar) ----
 const Logo = () => (
@@ -66,91 +65,127 @@ const MiniLanguageSwitcher = () => {
 
 // ---- App Illustration — phone fills container, bleeds off bottom naturally ----
 const AppIllustration = () => (
-  <div className="relative w-full h-full flex items-end justify-center pb-0">
-    {/* Subtle circular ambient — NO blur-2xl/3xl per DESIGN.md */}
-    <div className="absolute bottom-[10%] left-1/2 -translate-x-1/2 w-[180px] h-[180px] rounded-full bg-white/[0.04]" />
-
-    {/* Phone — fills height, slight rotation */}
+  <div className="relative w-full h-full flex items-end justify-center">
     <img
       src={img16}
       alt="myCheck App"
       className="relative z-10 h-[90%] w-auto object-contain rotate-[4deg] origin-bottom"
       style={{ filter: 'drop-shadow(0 32px 64px rgba(0,0,0,0.6)) drop-shadow(0 8px 16px rgba(0,0,0,0.4))' }}
     />
-
-    {/* -25% badge — top-left of illustration zone */}
     <motion.div
       animate={{ y: [0, -8, 0] }}
       transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
-      className="absolute top-[8%] left-[2%] bg-[#FFD60A] text-[#1E1B4B] text-[13px] font-black px-3 py-2 rounded-2xl shadow-xl z-20 whitespace-nowrap"
-      style={{ boxShadow: '0 8px 24px rgba(255,214,10,0.35)' }}
+      className="absolute top-[12%] left-[4%] bg-[#FFD60A] text-[#1E1B4B] text-[13px] font-black px-3 py-2 rounded-2xl z-20 whitespace-nowrap"
+      style={{ boxShadow: '0 8px 24px rgba(255,214,10,0.4)' }}
     >
       -25% скидка
     </motion.div>
-
-    {/* Cashback badge — right side, mid-height */}
-    <motion.div
-      animate={{ y: [0, -6, 0] }}
-      transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
-      className="absolute top-[42%] right-[2%] bg-[#34D399] text-[#0A4B2D] text-[11px] font-black px-3 py-1.5 rounded-xl shadow-lg z-20 whitespace-nowrap"
-      style={{ boxShadow: '0 6px 20px rgba(52,211,153,0.3)' }}
-    >
-      Cashback ₸840
-    </motion.div>
-
-    {/* Sparkles */}
-    <motion.div
-      animate={{ scale: [1, 1.5, 1], opacity: [0.4, 1, 0.4] }}
-      transition={{ duration: 2.8, repeat: Infinity }}
-      className="absolute top-[15%] right-[10%] text-[#FFD60A] text-lg z-20"
-    >✦</motion.div>
-    <motion.div
-      animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.7, 0.2] }}
-      transition={{ duration: 3.8, repeat: Infinity, delay: 1.4 }}
-      className="absolute top-[55%] left-[8%] text-[#FFD60A] text-sm z-20"
-    >✦</motion.div>
   </div>
 );
 
-// ---- Dashboard Illustration — laptop fills container ----
+// ---- Dashboard Illustration — premium SVG analytics UI ----
 const DashboardIllustration = () => (
-  <div className="relative w-full h-full flex items-end justify-center pb-0">
-    {/* Subtle ambient — NO blur */}
-    <div className="absolute bottom-[15%] left-1/2 -translate-x-1/2 w-[200px] h-[120px] rounded-full bg-white/[0.03]" />
+  <div className="relative w-full h-full flex items-end justify-center pb-2">
 
-    {/* Dashboard — fills most of container */}
-    <img
-      src={imgDashboard}
-      alt="myCheck Analytics"
-      className="relative z-10 w-[95%] object-contain rounded-2xl"
-      style={{ filter: 'drop-shadow(0 24px 48px rgba(0,0,0,0.7)) drop-shadow(0 4px 12px rgba(0,0,0,0.4))' }}
-    />
+    {/* Premium analytics card SVG */}
+    <svg
+      viewBox="0 0 280 340"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="relative z-10 w-[92%] h-auto"
+      style={{ filter: 'drop-shadow(0 20px 48px rgba(0,0,0,0.65))' }}
+    >
+      {/* Card background */}
+      <rect width="280" height="340" rx="20" fill="#0D1117"/>
+      <rect width="280" height="340" rx="20" fill="url(#cardGrad)" fillOpacity="0.6"/>
+      <rect x="0.5" y="0.5" width="279" height="339" rx="19.5" stroke="white" strokeOpacity="0.08"/>
 
-    {/* Новый партнёр chip — top area */}
+      {/* Header */}
+      <rect width="280" height="44" rx="20" fill="white" fillOpacity="0.04"/>
+      <rect y="24" width="280" height="20" fill="white" fillOpacity="0.04"/>
+      <circle cx="16" cy="22" r="5" fill="#FF5F57"/>
+      <circle cx="30" cy="22" r="5" fill="#FFBD2E"/>
+      <circle cx="44" cy="22" r="5" fill="#28C840"/>
+      <rect x="60" y="15" width="120" height="14" rx="7" fill="white" fillOpacity="0.05"/>
+      <text x="75" y="25" fill="white" fillOpacity="0.3" fontSize="7" fontFamily="system-ui">mycheck.kz / analytics</text>
+
+      {/* KPI row */}
+      <rect x="10" y="52" width="80" height="52" rx="10" fill="white" fillOpacity="0.05"/>
+      <text x="20" y="68" fill="white" fillOpacity="0.45" fontSize="8" fontFamily="system-ui">Выручка</text>
+      <text x="20" y="84" fill="white" fontSize="14" fontWeight="800" fontFamily="system-ui">₸2.4М</text>
+      <rect x="20" y="88" width="36" height="10" rx="4" fill="#4ADE80" fillOpacity="0.15"/>
+      <text x="22" y="96" fill="#4ADE80" fontSize="7" fontWeight="700" fontFamily="system-ui">+18% ↑</text>
+
+      <rect x="100" y="52" width="80" height="52" rx="10" fill="white" fillOpacity="0.05"/>
+      <text x="110" y="68" fill="white" fillOpacity="0.45" fontSize="8" fontFamily="system-ui">Клиентов</text>
+      <text x="110" y="84" fill="white" fontSize="14" fontWeight="800" fontFamily="system-ui">1,248</text>
+      <rect x="110" y="88" width="36" height="10" rx="4" fill="#4ADE80" fillOpacity="0.15"/>
+      <text x="112" y="96" fill="#4ADE80" fontSize="7" fontWeight="700" fontFamily="system-ui">+34% ↑</text>
+
+      <rect x="190" y="52" width="80" height="52" rx="10" fill="#FFD60A" fillOpacity="0.08"/>
+      <rect x="190.5" y="52.5" width="79" height="51" rx="9.5" stroke="#FFD60A" strokeOpacity="0.2"/>
+      <text x="200" y="68" fill="white" fillOpacity="0.45" fontSize="8" fontFamily="system-ui">ROI</text>
+      <text x="200" y="84" fill="#FFD60A" fontSize="14" fontWeight="800" fontFamily="system-ui">+340%</text>
+      <circle cx="204" cy="94" r="3" fill="#4ADE80"/>
+      <text x="210" y="97" fill="#4ADE80" fontSize="6.5" fontFamily="system-ui">live</text>
+
+      {/* Chart section */}
+      <rect x="10" y="114" width="260" height="130" rx="10" fill="white" fillOpacity="0.03"/>
+      <text x="20" y="130" fill="white" fillOpacity="0.4" fontSize="8" fontFamily="system-ui">Продажи за неделю</text>
+
+      {/* Bar chart — 7 bars */}
+      {([
+        [20, 68], [56, 88], [92, 52], [128, 100], [164, 74], [200, 114], [236, 86]
+      ] as [number, number][]).map(([x, h], i) => (
+        <g key={i}>
+          <rect
+            x={x} y={232 - h} width="18" height={h} rx="4"
+            fill={i === 5 ? '#FFD60A' : 'rgba(143,128,226,0.35)'}
+          />
+          {i === 5 && (
+            <rect x={x} y={232 - h} width="18" height="4" rx="4" fill="#FFD60A" fillOpacity="0.6"/>
+          )}
+        </g>
+      ))}
+
+      {/* Chart baseline */}
+      <line x1="10" y1="232" x2="270" y2="232" stroke="white" strokeOpacity="0.06"/>
+      {(['Пн','Вт','Ср','Чт','Пт','Сб','Вс'] as string[]).map((d, i) => (
+        <text key={i} x={29 + i * 36} y={242} fill="white" fillOpacity="0.2" fontSize="6.5" textAnchor="middle" fontFamily="system-ui">{d}</text>
+      ))}
+
+      {/* Recent transactions */}
+      <text x="10" y="262" fill="white" fillOpacity="0.35" fontSize="7.5" fontFamily="system-ui">Последние транзакции</text>
+
+      <rect x="10" y="268" width="260" height="22" rx="6" fill="white" fillOpacity="0.04"/>
+      <rect x="16" y="274" width="8" height="8" rx="2" fill="#8F80E2" fillOpacity="0.5"/>
+      <text x="30" y="282" fill="white" fillOpacity="0.7" fontSize="7.5" fontFamily="system-ui">Magnum • Абая</text>
+      <text x="234" y="282" fill="#4ADE80" fontSize="7.5" fontWeight="700" fontFamily="system-ui">+₸280</text>
+
+      <rect x="10" y="294" width="260" height="22" rx="6" fill="white" fillOpacity="0.03"/>
+      <rect x="16" y="300" width="8" height="8" rx="2" fill="#FFD60A" fillOpacity="0.4"/>
+      <text x="30" y="308" fill="white" fillOpacity="0.7" fontSize="7.5" fontFamily="system-ui">Sulpak • Достык</text>
+      <text x="224" y="308" fill="#4ADE80" fontSize="7.5" fontWeight="700" fontFamily="system-ui">+₸1,200</text>
+
+      <rect x="10" y="320" width="260" height="12" rx="6" fill="white" fillOpacity="0.02"/>
+
+      <defs>
+        <linearGradient id="cardGrad" x1="0" y1="0" x2="280" y2="340" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#1a1f35"/>
+          <stop offset="1" stopColor="#0a0d1a"/>
+        </linearGradient>
+      </defs>
+    </svg>
+
+    {/* Single floating chip */}
     <motion.div
-      animate={{ y: [0, -5, 0] }}
-      transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
-      className="absolute top-[5%] left-[3%] bg-black/40 border border-white/[0.15] backdrop-blur-sm text-white text-[11px] font-semibold px-3 py-1.5 rounded-full z-20 flex items-center gap-1.5 whitespace-nowrap"
+      animate={{ y: [0, -6, 0] }}
+      transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+      className="absolute top-[6%] left-[2%] bg-black/50 border border-white/[0.12] backdrop-blur-sm text-white text-[11px] font-semibold px-3 py-1.5 rounded-full z-20 flex items-center gap-1.5 whitespace-nowrap"
     >
       <span className="w-1.5 h-1.5 rounded-full bg-[#34D399] inline-block animate-pulse" />
       Новый партнёр
     </motion.div>
-
-    {/* ROI chip */}
-    <motion.div
-      animate={{ y: [0, -6, 0] }}
-      transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.3 }}
-      className="absolute top-[22%] right-[3%] bg-[#FFD60A]/[0.12] border border-[#FFD60A]/30 text-[#FFD60A] text-[11px] font-bold px-3 py-1.5 rounded-full z-20 whitespace-nowrap"
-    >
-      ROI +340%
-    </motion.div>
-
-    {/* Sparkle */}
-    <motion.div
-      animate={{ scale: [1, 1.4, 1], opacity: [0.4, 1, 0.4] }}
-      transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
-      className="absolute top-[10%] right-[12%] text-[#FFD60A] text-base z-20"
-    >✦</motion.div>
   </div>
 );
 
