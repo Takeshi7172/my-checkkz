@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { ChevronRight, ChevronDown } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
 import svgPaths from '@/imports/svg-by6trk53vw';
-import img16 from '@/assets/1fbf9ff2ab7596cc85d05cb6c6b9072ec853a197.png';
 
 // ---- Logo (inlined from Navbar) ----
 const Logo = () => (
@@ -63,147 +62,240 @@ const MiniLanguageSwitcher = () => {
   );
 };
 
-// ---- App Illustration (real phone image) ----
+// ---- App Illustration — iPhone SVG mockup ----
 const AppIllustration = () => (
-  <div className="relative flex items-end justify-center w-full h-full pb-4">
+  <div className="relative flex items-center justify-center w-full h-full">
     {/* Ambient glow */}
-    <div className="absolute right-4 bottom-4 w-[200px] h-[200px] rounded-full bg-white/6" />
+    <div className="absolute inset-0 flex items-center justify-center">
+      <div className="w-[180px] h-[180px] rounded-full bg-purple-400/20 blur-3xl" />
+    </div>
 
-    {/* Phone image */}
-    <img
-      src={img16}
-      alt="myCheck App"
-      className="relative z-10 w-[175px] md:w-[210px] object-contain drop-shadow-2xl rotate-3"
-      style={{ filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.4))' }}
-    />
+    {/* Phone SVG frame */}
+    <div className="relative z-10" style={{ filter: 'drop-shadow(0 24px 48px rgba(0,0,0,0.5))' }}>
+      <svg width="160" height="320" viewBox="0 0 160 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        {/* Phone body */}
+        <rect x="1" y="1" width="158" height="318" rx="36" fill="#0A0A14" stroke="#ffffff" strokeWidth="1.5" strokeOpacity="0.15"/>
+        {/* Screen area */}
+        <rect x="8" y="12" width="144" height="296" rx="30" fill="#0F0E1A"/>
+        {/* Dynamic island */}
+        <rect x="54" y="18" width="52" height="14" rx="7" fill="#000"/>
+        {/* Side button */}
+        <rect x="157" y="80" width="4" height="40" rx="2" fill="#ffffff" fillOpacity="0.2"/>
+        <rect x="-1" y="100" width="4" height="28" rx="2" fill="#ffffff" fillOpacity="0.2"/>
+        <rect x="-1" y="136" width="4" height="28" rx="2" fill="#ffffff" fillOpacity="0.2"/>
+
+        {/* App content — status bar */}
+        <text x="16" y="46" fill="white" fillOpacity="0.6" fontSize="8" fontFamily="system-ui">9:41</text>
+        <rect x="130" y="40" width="18" height="8" rx="2" fill="none" stroke="white" strokeWidth="1" strokeOpacity="0.4"/>
+        <rect x="131" y="41" width="13" height="6" rx="1" fill="#4ADE80"/>
+        <rect x="148" y="42" width="2" height="4" rx="1" fill="white" fillOpacity="0.4"/>
+
+        {/* App header */}
+        <text x="16" y="72" fill="white" fontSize="11" fontWeight="bold" fontFamily="system-ui">myCheck</text>
+        <text x="16" y="84" fill="white" fillOpacity="0.5" fontSize="7" fontFamily="system-ui">Привет, Алибек 👋</text>
+
+        {/* Balance card */}
+        <rect x="12" y="92" width="136" height="60" rx="14" fill="url(#balanceGrad)"/>
+        <text x="22" y="110" fill="white" fillOpacity="0.7" fontSize="7" fontFamily="system-ui">Кэшбэк баланс</text>
+        <text x="22" y="128" fill="white" fontSize="18" fontWeight="bold" fontFamily="system-ui">₸ 4 820</text>
+        <text x="22" y="142" fill="#FFD60A" fontSize="7" fontWeight="600" fontFamily="system-ui">+₸840 за последний чек</text>
+
+        {/* Recent receipts label */}
+        <text x="16" y="168" fill="white" fontSize="9" fontWeight="600" fontFamily="system-ui">Последние чеки</text>
+
+        {/* Receipt card 1 */}
+        <rect x="12" y="174" width="136" height="38" rx="10" fill="#ffffff" fillOpacity="0.07"/>
+        <rect x="20" y="183" width="20" height="20" rx="6" fill="#8F80E2" fillOpacity="0.4"/>
+        <text x="23" y="196" fill="white" fontSize="11">🛍</text>
+        <text x="48" y="192" fill="white" fontSize="8" fontWeight="600" fontFamily="system-ui">Magnum</text>
+        <text x="48" y="203" fill="white" fillOpacity="0.4" fontSize="7" fontFamily="system-ui">Сегодня, 14:22</text>
+        <text x="118" y="192" fill="#4ADE80" fontSize="8" fontWeight="700" fontFamily="system-ui">-25%</text>
+        <text x="116" y="203" fill="white" fillOpacity="0.5" fontSize="7" fontFamily="system-ui">₸3 200</text>
+
+        {/* Receipt card 2 */}
+        <rect x="12" y="216" width="136" height="38" rx="10" fill="#ffffff" fillOpacity="0.07"/>
+        <rect x="20" y="225" width="20" height="20" rx="6" fill="#FFD60A" fillOpacity="0.3"/>
+        <text x="23" y="238" fill="white" fontSize="11">☕</text>
+        <text x="48" y="234" fill="white" fontSize="8" fontWeight="600" fontFamily="system-ui">Coffee BOOM</text>
+        <text x="48" y="245" fill="white" fillOpacity="0.4" fontSize="7" fontFamily="system-ui">Вчера, 09:15</text>
+        <text x="116" y="234" fill="#4ADE80" fontSize="8" fontWeight="700" fontFamily="system-ui">-15%</text>
+        <text x="118" y="245" fill="white" fillOpacity="0.5" fontSize="7" fontFamily="system-ui">₸980</text>
+
+        {/* Bottom nav bar */}
+        <rect x="8" y="276" width="144" height="28" rx="14" fill="#ffffff" fillOpacity="0.05"/>
+        <text x="22" y="293" fill="#8F80E2" fontSize="14">🏠</text>
+        <text x="54" y="293" fill="white" fillOpacity="0.4" fontSize="14">🧾</text>
+        <text x="86" y="293" fill="white" fillOpacity="0.4" fontSize="14">🎁</text>
+        <text x="118" y="293" fill="white" fillOpacity="0.4" fontSize="14">👤</text>
+
+        <defs>
+          <linearGradient id="balanceGrad" x1="12" y1="92" x2="148" y2="152" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#7C6FD8"/>
+            <stop offset="1" stopColor="#9B4DCA"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
 
     {/* Floating -25% badge */}
     <motion.div
       animate={{ y: [0, -8, 0] }}
       transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
-      className="absolute left-0 top-8 bg-[#FFD60A] text-[#1E1B4B] text-sm font-black px-3 py-2 rounded-xl shadow-lg z-20"
+      className="absolute left-2 top-8 bg-[#FFD60A] text-[#1E1B4B] text-sm font-black px-3 py-2 rounded-xl shadow-lg z-20 whitespace-nowrap"
     >
-      -25%
+      -25% скидка
     </motion.div>
 
     {/* Cashback badge */}
     <motion.div
       animate={{ y: [0, -6, 0] }}
-      transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1.2 }}
-      className="absolute right-0 bottom-16 bg-[#34D399] text-[#0A4B2D] text-[11px] font-black px-3 py-1.5 rounded-xl shadow-lg z-20"
+      transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
+      className="absolute right-0 bottom-12 bg-[#34D399] text-[#0A4B2D] text-[11px] font-black px-3 py-1.5 rounded-xl shadow-lg z-20 whitespace-nowrap"
     >
       Cashback ₸840
     </motion.div>
 
-    {/* Sparkle 1 */}
+    {/* Sparkle */}
     <motion.div
-      animate={{ scale: [1, 1.3, 1], opacity: [0.6, 1, 0.6] }}
-      transition={{ duration: 2.5, repeat: Infinity }}
-      className="absolute top-2 right-2 text-[#FFD60A] text-xl z-20"
-    >
-      ✦
-    </motion.div>
-
-    {/* Sparkle 2 */}
+      animate={{ scale: [1, 1.4, 1], opacity: [0.5, 1, 0.5] }}
+      transition={{ duration: 2.8, repeat: Infinity }}
+      className="absolute top-4 right-4 text-[#FFD60A] text-lg z-20"
+    >✦</motion.div>
     <motion.div
-      animate={{ scale: [1, 1.4, 1], opacity: [0.4, 0.9, 0.4] }}
-      transition={{ duration: 3.2, repeat: Infinity, delay: 1 }}
-      className="absolute top-12 left-4 text-[#FFD60A] text-sm z-20"
-    >
-      ✦
-    </motion.div>
+      animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.8, 0.3] }}
+      transition={{ duration: 3.5, repeat: Infinity, delay: 1.2 }}
+      className="absolute top-14 left-6 text-[#FFD60A] text-sm z-20"
+    >✦</motion.div>
   </div>
 );
 
-// ---- Dashboard Illustration (inline mockup) ----
+// ---- Dashboard Illustration — Browser SVG mockup ----
 const DashboardIllustration = () => (
-  <div className="relative flex items-end justify-center w-full h-full pb-4 pr-2">
-    {/* Dashboard card mockup */}
-    <div className="relative z-10 w-[220px] md:w-[265px] bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-3 shadow-2xl">
-      {/* Top bar */}
-      <div className="flex items-center justify-between mb-3">
-        <div className="text-[8px] font-bold text-white/80">myCheck Analytics</div>
-        <div className="flex gap-1">
-          <div className="w-1.5 h-1.5 rounded-full bg-[#FFD60A]" />
-          <div className="w-1.5 h-1.5 rounded-full bg-white/30" />
-          <div className="w-1.5 h-1.5 rounded-full bg-white/30" />
-        </div>
-      </div>
+  <div className="relative flex items-center justify-center w-full h-full">
+    {/* Glow */}
+    <div className="absolute inset-0 flex items-center justify-center">
+      <div className="w-[200px] h-[160px] rounded-full bg-blue-500/15 blur-3xl" />
+    </div>
 
-      {/* Stat cards row — 3 cols */}
-      <div className="grid grid-cols-3 gap-1.5 mb-3">
-        <div className="bg-white/10 rounded-lg p-2">
-          <div className="text-[7px] text-white/50 mb-0.5">Выручка</div>
-          <div className="text-[11px] font-black text-white">₸2.4M</div>
-          <div className="text-[7px] text-green-400">+18%</div>
-        </div>
-        <div className="bg-white/10 rounded-lg p-2">
-          <div className="text-[7px] text-white/50 mb-0.5">Продажи</div>
-          <div className="text-[11px] font-black text-white">1,248</div>
-          <div className="text-[7px] text-green-400">+34%</div>
-        </div>
-        <div className="bg-white/10 rounded-lg p-2">
-          <div className="text-[7px] text-white/50 mb-1">Клиентов</div>
-          <div className="text-[11px] font-black text-white">847</div>
-          <div className="flex items-center gap-0.5">
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-            <span className="text-[7px] text-green-400">live</span>
-          </div>
-        </div>
-      </div>
+    {/* Browser/App frame */}
+    <div className="relative z-10" style={{ filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))' }}>
+      <svg width="230" height="280" viewBox="0 0 230 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+        {/* Window frame */}
+        <rect x="1" y="1" width="228" height="278" rx="16" fill="#0D1117" stroke="#ffffff" strokeWidth="1" strokeOpacity="0.12"/>
 
-      {/* Mini bar chart */}
-      <div className="bg-white/[0.08] rounded-lg p-2 mb-2">
-        <div className="text-[7px] text-white/50 mb-2">Продажи за неделю</div>
-        <div className="flex items-end gap-1 h-[32px]">
-          {[60, 80, 45, 90, 70, 95, 75].map((h, i) => (
-            <div
-              key={i}
-              className="flex-1 rounded-sm"
-              style={{
-                height: `${h}%`,
-                background: i === 5 ? '#FFD60A' : 'rgba(255,255,255,0.25)',
-              }}
-            />
-          ))}
-        </div>
-      </div>
+        {/* Title bar */}
+        <rect x="1" y="1" width="228" height="32" rx="16" fill="#161B22"/>
+        <rect x="1" y="17" width="228" height="16" fill="#161B22"/>
 
-      {/* Bottom row */}
-      <div className="flex items-center justify-between">
-        <div className="text-[7px] text-white/40">Ср. чек: ₸4,200</div>
-        <div className="bg-[#FFD60A]/20 text-[#FFD60A] text-[7px] font-bold px-2 py-0.5 rounded-full">
-          ROI +340%
-        </div>
-      </div>
+        {/* Traffic lights */}
+        <circle cx="20" cy="17" r="5" fill="#FF5F57"/>
+        <circle cx="34" cy="17" r="5" fill="#FFBD2E"/>
+        <circle cx="48" cy="17" r="5" fill="#28C840"/>
+
+        {/* URL bar */}
+        <rect x="68" y="10" width="130" height="14" rx="7" fill="#ffffff" fillOpacity="0.06"/>
+        <text x="90" y="20" fill="white" fillOpacity="0.4" fontSize="7" fontFamily="system-ui">mycheck.kz/analytics</text>
+
+        {/* Sidebar */}
+        <rect x="1" y="33" width="40" height="246" fill="#0A0D13" rx="0"/>
+        <rect x="40" y="33" width="1" height="246" fill="#ffffff" fillOpacity="0.06"/>
+
+        {/* Sidebar icons */}
+        <rect x="10" y="46" width="20" height="20" rx="6" fill="#3B82F6" fillOpacity="0.2"/>
+        <text x="13" y="60" fontSize="12" fill="#3B82F6">📊</text>
+        <rect x="10" y="74" width="20" height="20" rx="6" fill="transparent"/>
+        <text x="13" y="88" fontSize="12" fill="white" fillOpacity="0.3">🧾</text>
+        <rect x="10" y="102" width="20" height="20" rx="6" fill="transparent"/>
+        <text x="13" y="116" fontSize="12" fill="white" fillOpacity="0.3">👥</text>
+        <rect x="10" y="130" width="20" height="20" rx="6" fill="transparent"/>
+        <text x="13" y="144" fontSize="12" fill="white" fillOpacity="0.3">⚙️</text>
+
+        {/* Main content area */}
+        {/* Page title */}
+        <text x="50" y="52" fill="white" fontSize="10" fontWeight="700" fontFamily="system-ui">Аналитика</text>
+        <text x="50" y="63" fill="white" fillOpacity="0.35" fontSize="7" fontFamily="system-ui">Апрель 2025</text>
+
+        {/* KPI cards row */}
+        <rect x="50" y="70" width="54" height="46" rx="8" fill="#ffffff" fillOpacity="0.06"/>
+        <text x="57" y="83" fill="white" fillOpacity="0.5" fontSize="6" fontFamily="system-ui">Выручка</text>
+        <text x="57" y="97" fill="white" fontSize="11" fontWeight="800" fontFamily="system-ui">₸2.4M</text>
+        <rect x="57" y="103" width="28" height="8" rx="3" fill="#4ADE80" fillOpacity="0.2"/>
+        <text x="59" y="110" fill="#4ADE80" fontSize="6" fontWeight="700" fontFamily="system-ui">+18% ↑</text>
+
+        <rect x="110" y="70" width="54" height="46" rx="8" fill="#ffffff" fillOpacity="0.06"/>
+        <text x="117" y="83" fill="white" fillOpacity="0.5" fontSize="6" fontFamily="system-ui">Клиентов</text>
+        <text x="117" y="97" fill="white" fontSize="11" fontWeight="800" fontFamily="system-ui">1,248</text>
+        <rect x="117" y="103" width="28" height="8" rx="3" fill="#4ADE80" fillOpacity="0.2"/>
+        <text x="119" y="110" fill="#4ADE80" fontSize="6" fontWeight="700" fontFamily="system-ui">+34% ↑</text>
+
+        <rect x="170" y="70" width="48" height="46" rx="8" fill="#FFD60A" fillOpacity="0.1"/>
+        <text x="176" y="83" fill="white" fillOpacity="0.5" fontSize="6" fontFamily="system-ui">ROI</text>
+        <text x="176" y="97" fill="#FFD60A" fontSize="11" fontWeight="800" fontFamily="system-ui">+340%</text>
+        <circle cx="182" cy="108" r="3" fill="#4ADE80"/>
+        <text x="187" y="111" fill="#4ADE80" fontSize="6" fontFamily="system-ui">live</text>
+
+        {/* Chart area */}
+        <rect x="50" y="122" width="168" height="80" rx="8" fill="#ffffff" fillOpacity="0.04"/>
+        <text x="58" y="135" fill="white" fillOpacity="0.5" fontSize="7" fontFamily="system-ui">Продажи за неделю</text>
+
+        {/* Bar chart bars */}
+        {[
+          { x: 58, h: 32, color: 'rgba(139,120,230,0.5)' },
+          { x: 78, h: 44, color: 'rgba(139,120,230,0.5)' },
+          { x: 98, h: 26, color: 'rgba(139,120,230,0.5)' },
+          { x: 118, h: 52, color: 'rgba(139,120,230,0.5)' },
+          { x: 138, h: 38, color: 'rgba(139,120,230,0.5)' },
+          { x: 158, h: 58, color: '#FFD60A' },
+          { x: 178, h: 44, color: 'rgba(139,120,230,0.5)' },
+        ].map(({ x, h, color }, i) => (
+          <rect key={i} x={x} y={196 - h} width="14" height={h} rx="3" fill={color}/>
+        ))}
+
+        {/* Chart baseline */}
+        <line x1="50" y1="196" x2="218" y2="196" stroke="white" strokeOpacity="0.08" strokeWidth="1"/>
+
+        {/* Day labels */}
+        {['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map((d, i) => (
+          <text key={i} x={61 + i * 20} y={205} fill="white" fillOpacity="0.25" fontSize="6" fontFamily="system-ui" textAnchor="middle">{d}</text>
+        ))}
+
+        {/* Recent transactions */}
+        <text x="50" y="225" fill="white" fillOpacity="0.5" fontSize="7" fontFamily="system-ui">Последние транзакции</text>
+
+        <rect x="50" y="230" width="168" height="20" rx="5" fill="#ffffff" fillOpacity="0.04"/>
+        <text x="56" y="243" fill="white" fontSize="7" fontFamily="system-ui">Magnum • ул. Абая</text>
+        <text x="188" y="243" fill="#4ADE80" fontSize="7" fontWeight="700" fontFamily="system-ui" textAnchor="end">+₸280</text>
+
+        <rect x="50" y="253" width="168" height="20" rx="5" fill="#ffffff" fillOpacity="0.03"/>
+        <text x="56" y="266" fill="white" fontSize="7" fontFamily="system-ui">Coffee BOOM</text>
+        <text x="188" y="266" fill="#4ADE80" fontSize="7" fontWeight="700" fontFamily="system-ui" textAnchor="end">+₸120</text>
+      </svg>
     </div>
 
     {/* Floating "Новый партнёр" chip */}
     <motion.div
       animate={{ y: [0, -5, 0] }}
       transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-      className="absolute left-0 top-12 bg-white/15 border border-white/25 backdrop-blur-sm text-white text-[11px] font-semibold px-3 py-1.5 rounded-full z-20 flex items-center gap-1.5"
+      className="absolute left-0 top-10 bg-white/[0.12] border border-white/20 backdrop-blur-sm text-white text-[11px] font-semibold px-3 py-1.5 rounded-full z-20 flex items-center gap-1.5 whitespace-nowrap"
     >
       <span className="text-green-400">✓</span> Новый партнёр
     </motion.div>
 
-    {/* Floating ROI chip */}
+    {/* ROI chip */}
     <motion.div
       animate={{ y: [0, -6, 0] }}
       transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-      className="absolute right-0 bottom-20 bg-[#0F3460]/90 border border-[#3B82F6]/40 backdrop-blur-sm text-white text-[11px] font-bold px-3 py-1.5 rounded-full z-20 flex items-center gap-1.5"
+      className="absolute right-0 bottom-16 bg-[#FFD60A]/10 border border-[#FFD60A]/30 text-[#FFD60A] text-[11px] font-bold px-3 py-1.5 rounded-full z-20 whitespace-nowrap"
     >
       ROI +340%
     </motion.div>
 
     {/* Sparkle */}
     <motion.div
-      animate={{ scale: [1, 1.3, 1], opacity: [0.6, 1, 0.6] }}
+      animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
       transition={{ duration: 2.5, repeat: Infinity }}
-      className="absolute top-2 right-2 text-[#FFD60A] text-xl z-20"
-    >
-      ✦
-    </motion.div>
+      className="absolute top-2 right-4 text-[#FFD60A] text-lg z-20"
+    >✦</motion.div>
   </div>
 );
 
@@ -276,7 +368,7 @@ const ChoiceCard: React.FC<ChoiceCardProps> = ({
     </div>
 
     {/* Illustration — flex-1, centered */}
-    <div className="flex-1 flex items-center justify-center relative my-4 overflow-hidden">
+    <div className="flex-1 flex items-center justify-center relative my-4 overflow-visible min-h-0">
       {illustration}
     </div>
 
