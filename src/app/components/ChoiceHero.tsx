@@ -218,7 +218,10 @@ const ChoiceCard: React.FC<ChoiceCardProps> = ({
 
     {/* Text block — top-left, constrained to left 55% so illustration never overlaps */}
     <div className="relative z-10 max-w-[55%] md:max-w-[52%]">
-      <h2 className="text-4xl md:text-5xl font-black text-white leading-tight mb-3">
+      <h2
+        className="text-4xl md:text-5xl font-black text-white leading-tight mb-3"
+        style={{ fontFamily: 'var(--font-display)' }}
+      >
         {title}
       </h2>
       <p className="text-base md:text-lg text-white/65 leading-relaxed">
@@ -230,6 +233,9 @@ const ChoiceCard: React.FC<ChoiceCardProps> = ({
     <div className="absolute right-0 bottom-0 w-[52%] md:w-[50%] h-[90%] pointer-events-none overflow-visible">
       {illustration}
     </div>
+
+    {/* Top edge highlight */}
+    <div className="absolute top-0 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
   </motion.button>
 );
 
@@ -245,8 +251,27 @@ export const ChoiceHero: React.FC<ChoiceHeroProps> = ({ onSelectApp, onSelectBus
   return (
     <section
       className="min-h-screen flex flex-col overflow-hidden"
-      style={{ background: 'radial-gradient(ellipse at 30% 50%, #2D2775 0%, #1E1B4B 60%)' }}
+      style={{
+        background: 'radial-gradient(ellipse at 20% 60%, #3D2E8A 0%, #241F6B 35%, #130F3A 70%, #0A0820 100%)',
+        position: 'relative'
+      }}
     >
+      {/* Grain texture overlay */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 1,
+          pointerEvents: 'none',
+          opacity: 0.035,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+          backgroundRepeat: 'repeat',
+          backgroundSize: '256px 256px',
+        }}
+      />
+
+      <div className="relative z-[2] flex flex-col flex-1">
       {/* Top bar */}
       <div className="flex items-center justify-between px-6 md:px-[132px] pt-6 md:pt-8">
         <Logo />
@@ -259,7 +284,8 @@ export const ChoiceHero: React.FC<ChoiceHeroProps> = ({ onSelectApp, onSelectBus
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="text-white/40 text-xs md:text-sm font-semibold uppercase tracking-[0.2em]"
+          className="text-white/30 text-[10px] md:text-xs font-bold uppercase tracking-[0.35em]"
+          style={{ fontFamily: 'var(--font-display)', letterSpacing: '0.35em' }}
         >
           {t('choice_for_whom')}
         </motion.p>
@@ -277,7 +303,7 @@ export const ChoiceHero: React.FC<ChoiceHeroProps> = ({ onSelectApp, onSelectBus
             title={t('choice_business_title')}
             subtitle={t('choice_business_subtitle')}
             gradient="bg-gradient-to-br from-[#1A1650] via-[#211D5E] to-[#160F3E]"
-            border="border border-[#8F80E2]/30"
+            border="border border-[#8F80E2]/50"
             onClick={onSelectBusiness}
             delay={0.3}
             illustration={<DashboardIllustration />}
@@ -298,6 +324,7 @@ export const ChoiceHero: React.FC<ChoiceHeroProps> = ({ onSelectApp, onSelectBus
             <ChevronDown className="w-5 h-5" />
           </motion.div>
         </motion.div>
+      </div>
       </div>
     </section>
   );

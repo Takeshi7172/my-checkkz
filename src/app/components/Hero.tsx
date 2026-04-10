@@ -50,7 +50,7 @@ export const Hero = () => {
           transition={{ duration: 0.8 }}
           className="flex flex-col gap-6 md:gap-8 text-center md:text-left items-center md:items-start"
         >
-          <h1 className="text-4xl md:text-[56px] lg:text-[64px] font-black leading-[1.1] text-[#0f0f0f] tracking-tight max-w-[640px]">
+          <h1 className="text-4xl md:text-[56px] lg:text-[64px] font-black leading-[1.1] text-[#0f0f0f] tracking-tight max-w-[640px]" style={{ fontFamily: 'var(--font-display)' }}>
             {t('hero_title')}
           </h1>
           <p className="text-base md:text-[18px] lg:text-[20px] text-[#0f0f0f] leading-relaxed max-w-[480px] opacity-70 font-medium">
